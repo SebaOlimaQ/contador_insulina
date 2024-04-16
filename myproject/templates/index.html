@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Insulina</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Estilos adicionales */
+        body {
+            padding-top: 70px; /* Para que el contenido no se oculte detrás del navbar */
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">Calculadora de Insulina</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/registro">Registrarse</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/inicio_sesion">Iniciar sesión</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    
+    
+    <h1>Calculadora de Insulina</h1>
+
+    {% if hora_actual %}
+    <p>Hora actual en Argentina: {{ hora_actual }}</p>
+    {% endif %}
+
+    <form action="/" method="post">
+        <label for="carbs">Cantidad de carbohidratos (g):</label>
+        <input type="number" id="carbs" name="carbs" required>
+        <br>
+        <label for="ratio">Ratio de insulina (g/u):</label>
+        <input type="number" id="ratio" name="ratio" required>
+        <br>
+        <button type="submit">Calcular</button>
+    </form>
+
+    {% if ratio %}
+    <p>Seleccionaste un Ratio de: {{ ratio }}(g/u) que corresponde a 1 unid de insulina/{{ ratio }} gr de hidratos de carbono.</p>
+    {% endif %}
+
+    {% if carbohidratos_consumidos %}
+    <p>cantidad de carbohidratos que vas a consumir: {{ carbohidratos_consumidos }}(H/C)</p>
+    {% endif %}
+
+    {% if insulina %}
+    <p>Debes colocarte {{ insulina }} unidades de insulina.</p>
+    {% endif %}
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
