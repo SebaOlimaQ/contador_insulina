@@ -64,6 +64,20 @@
     {% if insulina %}
     <p>Debes colocarte {{ insulina }} unidades de insulina.</p>
     {% endif %}
+
+    {% if historial %}
+    <h2>Historial de Consultas</h2>
+    <ul>
+        {% for consulta in historial %}
+            <li>
+                Carbohidratos: {{ consulta.carbs }} g,
+                Ratio: {{ consulta.ratio }},
+                Hora: {{ consulta.hora }},
+                Insulina Sugerida: {{ consulta.insulina_sugerida }} unidades
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

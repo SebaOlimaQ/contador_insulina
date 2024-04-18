@@ -18,53 +18,77 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/">Inicio</a>
                 </li>
+            </ul>
+        </div>
     </nav>      
 
-
-    <h1>Registro de Usuario</h1>
-    {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            {% for category, message in messages %}
-                <div class="alert alert-{{ category }}">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
-    <form method="POST">
-        {{ form.csrf_token }}
-        <div>
-            {{ form.nombre_completo.label }} {{ form.nombre_completo }}
-            {% for error in form.nombre_completo.errors %}
-                <span class="error">{{ error }}</span>
-            {% endfor %}
-        </div>
-        <div>
-            {{ form.localidad.label }} {{ form.localidad }}
-            {% for error in form.localidad.errors %}
-                <span class="error">{{ error }}</span>
-            {% endfor %}
-        </div>
-        <div>
-            {{ form.usuario.label }} {{ form.usuario }}
-            {% for error in form.usuario.errors %}
-                <span class="error">{{ error }}</span>
-            {% endfor %}
-        </div>
-        <div>
-            {{ form.contraseña.label }} {{ form.contraseña }}
-            {% for error in form.contraseña.errors %}
-                <span class="error">{{ error }}</span>
-            {% endfor %}
-        </div>
-        <div>
-            {{ form.confirmar_contraseña.label }} {{ form.confirmar_contraseña }}
-            {% for error in form.confirmar_contraseña.errors %}
-                <span class="error">{{ error }}</span>
-            {% endfor %}
-        </div>
-        <button type="submit">Registrarse</button>
-    </form>
+    <div class="container">
+        <h1>Registro de Usuario</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form method="POST">
+            {{ form.csrf_token }}
+            <div class="form-group">
+                {{ form.nombre_completo.label }} {{ form.nombre_completo }}
+                {% for error in form.nombre_completo.errors %}
+                    <span class="error">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ form.usuario.label }} {{ form.usuario }}
+                {% for error in form.usuario.errors %}
+                    <span class="error">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ form.contraseña.label }} {{ form.contraseña }}
+                {% for error in form.contraseña.errors %}
+                    <span class="error">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ form.confirmar_contraseña.label }} {{ form.confirmar_contraseña }}
+                {% for error in form.confirmar_contraseña.errors %}
+                    <span class="error">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                <label for="ratio_1">Ratio Bloque 1</label>
+                {{ form.ratio_1(size=10, id="ratio_1") }}
+                {% for error in form.ratio_1.errors %}
+                    <span class="error">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                <label for="ratio_2">Ratio Bloque 2</label>
+                {{ form.ratio_2(size=10, id="ratio_2") }}
+                {% for error in form.ratio_2.errors %}
+                    <span class="error">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                <label for="ratio_3">Ratio Bloque 3</label>
+                {{ form.ratio_3(size=10, id="ratio_3") }}
+                {% for error in form.ratio_3.errors %}
+                    <span class="error">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                <label for="ratio_4">Ratio Bloque 4</label>
+                {{ form.ratio_4(size=10, id="ratio_4") }}
+                {% for error in form.ratio_4.errors %}
+                    <span class="error">{{ error }}</span>
+                {% endfor %}
+            </div>
+            <button type="submit" class="btn btn-primary">Registrarse</button>
+        </form>
+    </div>
 </body>
 </html>
-
